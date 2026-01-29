@@ -1,0 +1,25 @@
+{
+  "cities": [
+    { "id": "1", "name": "London", "temp": 15, "condition": "Cloudy", "humidity": 80 },
+     { "id": "2", "name": "Dubai", "temp": 38, "condition": "Sunny", "humidity": 15 },
+    { "id": "3", "name": "New York", "temp": 22, "condition": "Partly Cloudy", "humidity": 65 },
+     { "id": "4", "name": "Tokyo", "temp": 26, "condition": "Rainy", "humidity": 78 },
+    { "id": "5", "name": "Paris", "temp": 18, "condition": "Cloudy", "humidity": 72 },
+     { "id": "6", "name": "Berlin", "temp": 16, "condition": "Windy", "humidity": 68 },
+    { "id": "7", "name": "Sydney", "temp": 24, "condition": "Sunny", "humidity": 55 },
+     { "id": "8", "name": "Toronto", "temp": 12, "condition": "Rainy", "humidity": 82 },
+    { "id": "9", "name": "Moscow", "temp": 10, "condition": "Snowy", "humidity": 75 },
+    { "id": "10", "name": "Mumbai", "temp": 30, "condition": "Humid", "humidity": 85 },
+     { "id": "11", "name": "Cape Town", "temp": 20, "condition": "Clear", "humidity": 60 },
+    { "id": "12", "name": "Nairobi", "temp": 23, "condition": "Sunny", "humidity": 50 },
+    { "id": "13", "name": "Rome", "temp": 21, "condition": "Clear", "humidity": 58 },
+    { "id": "14", "name": "Beijing", "temp": 19, "condition": "Hazy", "humidity": 70 },
+    { "id": "15", "name": "Los Angeles", "temp": 25, "condition": "Sunny", "humidity": 40 },
+     { "id": "18", "name": "Bangkok", "temp": 32, "condition": "Humid", "humidity": 88 },
+    { "id": "19", "name": "Singapore", "temp": 31, "condition": "Thunderstorms", "humidity": 90 },
+    { "id": "20", "name": "Istanbul", "temp": 22, "condition": "Windy", "humidity": 62 },
+    { "id": "21", "name": "Cairo", "temp": 36, "condition": "Hot", "humidity": 20 },
+     { "id": "22", "name": "Lagos", "temp": 29, "condition": "Rainy", "humidity": 84 },
+    { "id": "23", "name": "Mexico City", "temp": 20, "condition": "Partly Cloudy", "humidity": 55 }
+  ]
+}

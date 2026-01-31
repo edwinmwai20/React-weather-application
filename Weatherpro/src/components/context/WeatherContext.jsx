@@ -12,7 +12,7 @@ function WeatherProvider({Children}){
         fetch("")
         .then(response=>response.json())
         .then(data=>setCities(data))
-    })
+    }) 
 
 // Posting a new city
     function AddCity(newCity){

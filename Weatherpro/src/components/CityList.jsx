@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { WeatherContext } from "./WeatherContext";
+import { WeatherContext } from "./context/WeatherContext";
 import CityCard from "./CityCard";
 
 function CityList() {

@@ -1,43 +1,56 @@
-import { Children, createContext, useContext,useEffect,useState} from "react";
+import { createContext, useEffect, useState } from "react";
 
+// Create context
+export const WeatherContext = createContext();
 
-export const WeatherContext = createContext()
+function WeatherProvider({ children }) {
+  const [cities, setCities] = useState([]);
+  const [loading, setLoading] = useState(true); // Optional: loading state
+  const [error, setError] = useState(null);     // Optional: error state
 
-function WeatherProvider({Children}){
+  // Fetch cities once when component mounts
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/cities"); // json-server port
+        if (!response.ok) throw new Error("Failed to fetch cities");
+        const data = await response.json();
+        setCities(data);
+      } catch (err) {
+        console.error("Error fetching cities:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    const[cities,setCities] =useState([])
+    fetchCities();
+  }, []);
 
+  // Add a new city
+  function addCity(newCity) {
+    setCities([...cities, newCity]);
+  }
 
-    useEffect(()=>{
-        fetch("")
-        .then(response=>response.json())
-        .then(data=>setCities(data))
-    })
+  // Delete a city
+  function deleteCity(id) {
+    setCities(cities.filter((city) => city.id !== id));
+  }
 
-// Posting a new city
-    function AddCity(newCity){
-        setCities([...cities,newCity])
-    }
+  // Update a city
+  function updateCity(updatedCity) {
+    setCities(
+      cities.map((city) => (city.id === updatedCity.id ? updatedCity : city))
+    );
+  }
 
-//Deleting a city
-
-    function DeleteCity(id){
-        setCities(cities.filter(city=>city.id !==id))
-    }
-
-// Updateing the city
-    
-    function  updateCity(updateCity){
-        setCities(
-            cities.map(city=>city.id === updateCity.id ? updateCity:city)
-        )
-    }
-
-    return(
-    <WeatherContext.Provider value={{cities,AddCity,DeleteCity,updateCity}}>
-        {Children}
+  return (
+    <WeatherContext.Provider
+      value={{ cities, addCity, deleteCity, updateCity, loading, error }}
+    >
+      {children}
     </WeatherContext.Provider>
-    )
+  );
 }
 
-export default WeatherProvider
+export default WeatherProvider;

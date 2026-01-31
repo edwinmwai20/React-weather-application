@@ -2,10 +2,10 @@ import { useContext,useState } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 
 function AddCityForm(){
-    const {AddCity} = useContext(WeatherContext);
+    const {addCity} = useContext(WeatherContext);
 
     const [name, setName] = useState("")
-    const [temp, setTemp]= useState("")
+    const [temperature, setTemp]= useState("")
     const[condition, setCondition] = useState("")
     const [humidity,setHumidity] = useState()
 
@@ -13,25 +13,24 @@ function AddCityForm(){
     function HandleSubmit(e){
         e.preventDefault()
 
-        fetch("http://localhost:3000/cities",{
+        fetch("http://localhost:5000/cities",{
             method:"POST",
-            header:{"Content-Type":"application/json"},
+            headers:{"Content-Type":"application/json"},
             body:JSON.stringify({
-                name:city,
-                temperature:temperature,
+                name:name,
+                temp:temperature,
                 condition:condition,
                 humidity:humidity
             })
         })
           .then(response=>response.json())
-          .then(data=>AddCity(data))
+          .then(data=>addCity(data))
     }
-
 
     
     return(
         <form onSubmit={HandleSubmit}>
-            <input type="text" placeholder="City Name" onChange={e=>setCity (e.target.value)}/>
+            <input type="text" placeholder="City Name" onChange={e=>setName (e.target.value)}/>
             <input type="text" placeholder="Temp"onChange={e=>setTemp(e.target.value)}/>
             <input type="text" placeholder="Condition" onChange={e=>setCondition(e.target.value)}/>
             <input type="text"  placeholder="Humidity" onChange={e=>setHumidity (e.target.value)}/>

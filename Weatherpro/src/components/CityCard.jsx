@@ -4,14 +4,13 @@ function CityCard({ city }) {
     return (
         <div className="card">
             <h3>{city.name}</h3>
-            <p>Temperature: {city.temp}</p>
+            <p>Temp: {city.temp}°C</p>
             <p>Condition: {city.condition}</p>
-            {/* When I click View, it will take me to the page for THIS city. */}
-            <Link to={"/city/" + city.id}>View Details</Link>
+            <Link to={`/city/${city.id}`}>View Details</Link>
         </div>
-    )
+    );
 }
 
-export default CityCard
+export default CityCard;
 
 

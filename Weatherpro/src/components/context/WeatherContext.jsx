@@ -1,53 +1,31 @@
 import { createContext, useEffect, useState } from "react";
 
-// Create context
 export const WeatherContext = createContext();
 
 function WeatherProvider({ children }) {
   const [cities, setCities] = useState([]);
-  const [loading, setLoading] = useState(true); // Optional: loading state
-  const [error, setError] = useState(null);     // Optional: error state
+  const [loading, setLoading] = useState(true);
 
-  // Fetch cities once when component mounts
   useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/cities"); // json-server port
-        if (!response.ok) throw new Error("Failed to fetch cities");
-        const data = await response.json();
+    fetch("http://localhost:5000/cities")
+      .then(res => res.json())
+      .then(data => {
+        console.log("Cities loaded:", data);
         setCities(data);
-      } catch (err) {
-        console.error("Error fetching cities:", err);
-        setError(err.message);
-      } finally {
         setLoading(false);
-      }
-    };
-
-    fetchCities();
+      })
+      .catch(err => {
+        console.error("Error loading cities:", err);
+        setLoading(false);
+      });
   }, []);
 
-  // Add a new city
   function addCity(newCity) {
     setCities([...cities, newCity]);
   }
 
-  // Delete a city
-  function deleteCity(id) {
-    setCities(cities.filter((city) => city.id !== id));
-  }
-
-  // Update a city
-  function updateCity(updatedCity) {
-    setCities(
-      cities.map((city) => (city.id === updatedCity.id ? updatedCity : city))
-    );
-  }
-
   return (
-    <WeatherContext.Provider
-      value={{ cities, addCity, deleteCity, updateCity, loading, error }}
-    >
+    <WeatherContext.Provider value={{ cities, addCity, loading }}>
       {children}
     </WeatherContext.Provider>
   );

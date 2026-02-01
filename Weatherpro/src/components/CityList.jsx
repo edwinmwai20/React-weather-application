@@ -1,23 +1,18 @@
 import { useContext } from "react";
-import { WeatherContext } from "./WeatherContext";
+import { WeatherContext } from "./context/WeatherContext";
 import CityCard from "./CityCard";
 
 function CityList() {
-  const { cities } = useContext(WeatherContext);
-//if data is still loading or fetch failed, show message
+  const { cities, loading } = useContext(WeatherContext);
 
-if(!cities || cities.length === 0){
-return <p>Loading weather data...</p>;
-}
-return (
+  if (loading) return <p style={{ textAlign: "center", fontSize: "1.2rem" }}>Loading cities...</p>;
+  if (!cities || cities.length === 0) return <p style={{ textAlign: "center", fontSize: "1.2rem" }}>No cities found</p>;
+
+  return (
     <div className="grid">
-        {cities.map(city => (
-            <CityCard key={city.id}
-            city={city}/>
-        ))}
+      {cities.map(city => <CityCard key={city.id} city={city} />)}
     </div>
-)
+  );
 }
-
 
 export default CityList;

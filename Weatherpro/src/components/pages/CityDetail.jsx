@@ -26,4 +26,3 @@ function CityDetail() {
 
 export default CityDetail;
 
-export default CityDetail; 

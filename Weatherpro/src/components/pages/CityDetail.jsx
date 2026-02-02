@@ -6,9 +6,10 @@ function CityDetail() {
     const { id } = useParams();
     const { cities, loading } = useContext(WeatherContext);
 
-    if (loading) return <div>Loading...</div>;
-    const city = cities.find(c => String(c.id) === String(id));
-    if (!city) return <div>City not found</div>;
+   if (loading) return <div>Loading...</div>;
+
+   const city = cities.find(c => c.id == id);
+if (!city) return <div>City not found</div>;
 
     return (
         <div className="detail-page">

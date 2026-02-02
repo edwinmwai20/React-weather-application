@@ -19,10 +19,26 @@ function AddCityForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input placeholder="City Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-            <input placeholder="Temperature" value={form.temp} onChange={e => setForm({ ...form, temp: e.target.value })} />
-            <input placeholder="Condition" value={form.condition} onChange={e => setForm({ ...form, condition: e.target.value })} />
-            <input placeholder="Humidity" value={form.humidity} onChange={e => setForm({ ...form, humidity: e.target.value })} />
+            <input
+                placeholder="City Name"
+                value={form.name}
+                onChange={e => setForm({ ...form, name: e.target.value })}
+            />
+            <input
+                placeholder="Temperature"
+                value={form.temp}
+                onChange={e => setForm({ ...form, temp: e.target.value })}
+            />
+            <input
+                placeholder="Condition"
+                value={form.condition}
+                onChange={e => setForm({ ...form, condition: e.target.value })}
+            />
+            <input
+                placeholder="Humidity"
+                value={form.humidity}
+                onChange={e => setForm({ ...form, humidity: e.target.value })}
+            />
             <button>Add City</button>
         </form>
     );

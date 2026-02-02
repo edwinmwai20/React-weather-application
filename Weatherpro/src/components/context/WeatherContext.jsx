@@ -10,7 +10,6 @@ function WeatherProvider({ children }) {
     fetch("http://localhost:5000/cities")
       .then(res => res.json())
       .then(data => {
-        console.log("Cities loaded:", data);
         setCities(data);
         setLoading(false);
       })
